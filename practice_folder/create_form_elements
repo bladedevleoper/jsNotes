@@ -1,0 +1,48 @@
+
+
+const listDiv = document.getElementById('listDiv');
+
+const ul = document.getElementById('ulList');
+
+const button = document.querySelector('button');
+let count = 0;
+function createLi(e){
+    let item = document.createElement('li');
+        item.textContent = 'Item' + ' ' + count++;
+        
+    
+    //button to add
+    let button = document.createElement('button');
+    //button.type ='button'
+    //button.type = 'button';
+    button.textContent = 'Remove';
+    button.className ='remove_item';
+    item.appendChild(button);
+    ul.appendChild(item);
+}
+
+listDiv.addEventListener('click', function(event) {
+    
+
+    if(event.target.tagName == 'BUTTON' && event.target.className == 'addButton'){
+        //let item = document.write('button pressed');
+        
+        createLi(event);
+
+    }
+
+   
+});
+
+
+ul.addEventListener('click', function(event){
+
+    if(event.target.tagName == 'BUTTON' && event.target.className == 'remove_item'){
+        let li = event.target.parentNode;
+        let button = li.parentNode;
+        //console.log(button);
+        ul.removeChild(li);
+    }
+
+
+});
